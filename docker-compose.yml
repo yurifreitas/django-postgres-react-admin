@@ -28,12 +28,12 @@ services:
           - db    
           
     django:
-        container_name: django-api
-        build: ./api
+        container_name: django-backend
+        build: ./backend
         restart: always
         ports:
            - 8000:8000
-        env_file: ./api/dev.env
+        env_file: ./backend/dev.env
         depends_on:
            - db
   
