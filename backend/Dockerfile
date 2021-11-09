@@ -22,8 +22,6 @@ RUN apk --purge del .build-deps
 
 # copy project
 COPY . /app/
-RUN rm -rf /app/static 
-COPY ./static /var/www/app/static
 
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh" ]

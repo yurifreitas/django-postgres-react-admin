@@ -19,7 +19,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include("authentication.urls"),name="accounts"),
     path('api/', include("authentication.api_urls"),name="api"),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt")),
 ]

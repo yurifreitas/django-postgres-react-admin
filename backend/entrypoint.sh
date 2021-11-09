@@ -3,13 +3,12 @@
 # Collect all admin files
 python3 manage.py collectstatic --no-input
 
-
+# Run Authentication migrate
 python3 manage.py migrate authentication
+
 # Apply database migrations
 echo "Applying database migrations"
 python3 manage.py migrate 
-
-
 
 # Create a SuperUser
 python3 manage.py initadmin

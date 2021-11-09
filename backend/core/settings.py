@@ -129,7 +129,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [AUTH_DIR.joinpath('templates'), CORE_DIR.joinpath('templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -214,6 +214,4 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.Account'
-LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/account/login-error/'
