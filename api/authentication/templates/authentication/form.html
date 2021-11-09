@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>User <small>@{{ user.username }}</small></h2>
+
+<div class="row-fluid">
+  <div class="span4">
+
+
+      <p><b>A valid email address is required</b></p>
+
+<form action="" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
+    {% endbuttons %}
+</form>
+
+    <hr/>
+
+  </div>
+</div>
+
+{% endblock %}

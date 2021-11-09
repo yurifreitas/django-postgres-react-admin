@@ -1,0 +1,52 @@
+version: '3.7'
+services:
+    db:
+        container_name: postgresdb
+        build: ./db
+        restart: always
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5438:5432'
+
+    pg_admin:
+        container_name: pgadmin4
+        image: dpage/pgadmin4:latest
+        restart: always
+        ports:
+          - "5050:80"
+        environment:
+          - PGADMIN_DEFAULT_EMAIL=postgres@gmail.com
+          - PGADMIN_DEFAULT_PASSWORD=postgres
+        depends_on:
+          - db    
+          
+    django:
+        container_name: django-api
+        build: ./api
+        restart: always
+        ports:
+           - 8000:8000
+        env_file: ./api/dev.env
+        depends_on:
+           - db
+  
+    frontend:
+        build: ./frontend
+        environment:
+           CHOKIDAR_USEPOLLING: "true"
+        ports:
+          - "3000:3000"
+        env_file: ./frontend/dev.env
+        stdin_open: true
+        tty: true
+        volumes:
+          - './frontend:/usr/src/app'
+        depends_on:
+           - django
