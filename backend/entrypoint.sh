@@ -16,4 +16,4 @@ python3 manage.py initadmin
 
 # Start server
 echo "Starting server"
-gunicorn core.wsgi -b  0.0.0.0:8000 --reload
+gunicorn core.wsgi -w 2 -b :8000 --reload
